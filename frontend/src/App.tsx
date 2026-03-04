@@ -7,7 +7,7 @@ import MosaicPreview from "@/components/MosaicPreview"
 import Gallery from "@/components/Gallery"
 import { Zap, Sparkles, Download, Camera, Settings as SettingsIcon, Image, Rocket } from "lucide-react"
 
-const API_BASE = "/api"
+const API_BASE = import.meta.env.VITE_API_URL || "/api"
 
 export default function App() {
     const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null)

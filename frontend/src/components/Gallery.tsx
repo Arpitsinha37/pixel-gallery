@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { Download, Trash2, X, ImageIcon } from "lucide-react"
 
-const API_BASE = "/api"
+const API_BASE = import.meta.env.VITE_API_URL || "/api"
 
 interface GalleryEntry {
     id: string

@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback } from "react"
 import { Upload, ImageIcon, RefreshCw } from "lucide-react"
 
-const API_BASE = "/api"
+const API_BASE = import.meta.env.VITE_API_URL || "/api"
 
 interface UploadedFile {
     fileId: string
@@ -95,8 +95,8 @@ export default function ImageUploader({ onUpload, uploadedFile }: ImageUploaderP
     return (
         <div
             className={`group relative flex flex-col items-center justify-center gap-3 p-12 rounded-xl border-2 border-dashed cursor-pointer transition-all duration-300 ${isDragging
-                    ? "border-purple-500 bg-purple-500/10"
-                    : "border-white/10 hover:border-purple-500/40 hover:bg-white/[0.02]"
+                ? "border-purple-500 bg-purple-500/10"
+                : "border-white/10 hover:border-purple-500/40 hover:bg-white/[0.02]"
                 }`}
             onClick={handleClick}
             onDragOver={handleDragOver}

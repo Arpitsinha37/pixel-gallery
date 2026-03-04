@@ -34,9 +34,10 @@ app.add_middleware(
 
 # ---- Directories ----
 BASE_DIR = os.path.dirname(__file__)
-UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
-OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
-GALLERY_DB = os.path.join(BASE_DIR, "gallery.json")
+DATA_DIR = os.environ.get("RAILWAY_VOLUME_MOUNT_PATH", BASE_DIR)
+UPLOAD_DIR = os.path.join(DATA_DIR, "uploads")
+OUTPUT_DIR = os.path.join(DATA_DIR, "outputs")
+GALLERY_DB = os.path.join(DATA_DIR, "gallery.json")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
