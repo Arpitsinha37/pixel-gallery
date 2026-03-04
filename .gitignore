@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+
+# Backend generated files
+backend/uploads/
+backend/outputs/
+backend/emoji_tiles/
+backend/emoji_colors.json
+backend/gallery.json
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Test files
+test_image.jpg
+test_e2e.py
+
+# OS
+.DS_Store
+Thumbs.db
