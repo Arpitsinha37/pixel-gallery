@@ -73,8 +73,12 @@ export default function App() {
                 }),
             })
             if (!res.ok) {
-                const err = await res.json()
-                throw new Error(err.detail || "Failed")
+                let errMessage = `Server Error ${res.status}`
+                try {
+                    const err = await res.json()
+                    if (err.detail) errMessage = err.detail
+                } catch { }
+                throw new Error(errMessage)
             }
             const data = await res.json()
             pollProgress(data.task_id, (result) => {

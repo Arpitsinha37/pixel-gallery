@@ -36,8 +36,12 @@ export default function ImageUploader({ onUpload, uploadedFile }: ImageUploaderP
 
             const res = await fetch(`${API_BASE}/upload`, { method: "POST", body: formData })
             if (!res.ok) {
-                const err = await res.json()
-                throw new Error(err.detail || "Upload failed")
+                let errMessage = `Server Error ${res.status}`
+                try {
+                    const err = await res.json()
+                    if (err.detail) errMessage = err.detail
+                } catch { }
+                throw new Error(errMessage)
             }
 
             const data = await res.json()

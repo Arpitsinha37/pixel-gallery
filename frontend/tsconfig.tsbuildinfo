@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/gallery.tsx","./src/components/imageuploader.tsx","./src/components/mosaicpreview.tsx","./src/components/progressbar.tsx","./src/components/settingspanel.tsx","./src/components/ui/hero-section-dark.tsx","./src/lib/utils.ts","./vite-env.d.ts"],"version":"5.6.3"}
