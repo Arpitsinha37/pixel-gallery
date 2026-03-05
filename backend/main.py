@@ -213,7 +213,7 @@ def _run_generation(
     try:
         if preview:
             result_filename = mosaic_engine.generate_preview(
-                upload_path, theme=theme
+                upload_path, theme=theme, output_dir=OUTPUT_DIR
             )
         else:
             result_filename = mosaic_engine.generate_mosaic(
@@ -222,6 +222,7 @@ def _run_generation(
                 density=density,
                 theme=theme,
                 progress_callback=progress_callback,
+                output_dir=OUTPUT_DIR,
             )
 
         task_progress[task_id] = {

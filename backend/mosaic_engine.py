@@ -14,7 +14,7 @@ class MosaicEngine:
     def __init__(self, emoji_db: EmojiDatabase):
         self.emoji_db = emoji_db
 
-    def generate_preview(self, image_path: str, theme: str = "all") -> str:
+    def generate_preview(self, image_path: str, theme: str = "all", output_dir: str = None) -> str:
         """
         Generate a quick low-resolution preview mosaic (~1000 emoji tiles).
         Returns path to the saved preview image.
@@ -26,6 +26,7 @@ class MosaicEngine:
             theme=theme,
             output_suffix="_preview",
             progress_callback=None,
+            output_dir=output_dir,
         )
 
     def generate_mosaic(
@@ -35,6 +36,7 @@ class MosaicEngine:
         density: int = 50000,
         theme: str = "all",
         progress_callback=None,
+        output_dir: str = None,
     ) -> str:
         """
         Generate a full high-resolution emoji mosaic.
@@ -47,6 +49,7 @@ class MosaicEngine:
             theme=theme,
             output_suffix="_mosaic",
             progress_callback=progress_callback,
+            output_dir=output_dir,
         )
 
     def _generate(
@@ -57,6 +60,7 @@ class MosaicEngine:
         theme: str,
         output_suffix: str,
         progress_callback=None,
+        output_dir: str = None,
     ) -> str:
         """Core mosaic generation pipeline."""
 
@@ -148,7 +152,8 @@ class MosaicEngine:
         if progress_callback:
             progress_callback(95, "Saving mosaic...")
 
-        output_dir = os.path.join(os.path.dirname(image_path), "..", "outputs")
+        if output_dir is None:
+            output_dir = os.path.join(os.path.dirname(image_path), "..", "outputs")
         os.makedirs(output_dir, exist_ok=True)
 
         base_name = os.path.splitext(os.path.basename(image_path))[0]
