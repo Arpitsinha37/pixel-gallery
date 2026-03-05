@@ -301,11 +301,12 @@ async def download_mosaic(filename: str):
     if not os.path.exists(filepath):
         raise HTTPException(status_code=404, detail="File not found")
 
+    display_name = filename if filename.endswith(".png") else f"{filename}.png"
+
     return FileResponse(
         filepath,
         media_type="image/png",
-        filename=filename,
-        headers={"Content-Disposition": f"attachment; filename={filename}"},
+        filename=display_name,
     )
 
 
