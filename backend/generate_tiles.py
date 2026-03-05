@@ -292,8 +292,8 @@ def create_emoji_tile(emoji_char, color, size=TILE_SIZE):
     # Try to render the actual emoji using system fonts
     font = None
     font_paths = [
-        # Bundle font for Linux servers
-        os.path.join(os.path.dirname(__file__), "NotoColorEmoji.ttf"),
+        # Bundle font for Linux servers (Twitter Color Emoji - highly compatible with PIL)
+        os.path.join(os.path.dirname(__file__), "Twemoji.ttf"),
         # Windows emoji fonts
         "C:/Windows/Fonts/seguiemj.ttf",
         "C:/Windows/Fonts/segoeui.ttf",
