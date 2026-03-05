@@ -47,7 +47,7 @@ export default function Gallery() {
     const handleDownload = (filename: string) => {
         const a = document.createElement("a")
         a.href = `${API_BASE}/download/${filename}`
-        a.download = filename
+        a.download = filename.includes(".png") ? filename : `${filename}.png`
         document.body.appendChild(a)
         a.click()
         document.body.removeChild(a)

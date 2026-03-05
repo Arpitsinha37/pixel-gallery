@@ -98,7 +98,7 @@ export default function App() {
         if (!mosaicFilename) return
         const a = document.createElement("a")
         a.href = `${API_BASE}/download/${mosaicFilename}`
-        a.download = mosaicFilename
+        a.download = mosaicFilename.includes(".png") ? mosaicFilename : `${mosaicFilename}.png`
         document.body.appendChild(a)
         a.click()
         document.body.removeChild(a)
