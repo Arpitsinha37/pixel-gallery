@@ -292,10 +292,12 @@ def create_emoji_tile(emoji_char, color, size=TILE_SIZE):
     # Try to render the actual emoji using system fonts
     font = None
     font_paths = [
+        # Bundle font for Linux servers
+        os.path.join(os.path.dirname(__file__), "NotoColorEmoji.ttf"),
         # Windows emoji fonts
         "C:/Windows/Fonts/seguiemj.ttf",
         "C:/Windows/Fonts/segoeui.ttf",
-        # Linux
+        # Linux system
         "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf",
         "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
         # macOS
