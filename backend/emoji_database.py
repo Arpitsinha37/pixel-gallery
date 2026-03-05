@@ -44,10 +44,10 @@ class EmojiDatabase:
     def _compute_colors(self):
         """Compute average RGB color for each emoji tile."""
         if not os.path.exists(TILES_DIR):
-            raise FileNotFoundError(
-                f"Emoji tiles directory not found: {TILES_DIR}\n"
-                "Run 'python generate_tiles.py' first to generate emoji tiles."
-            )
+            print(f"Emoji tiles directory not found: {TILES_DIR}")
+            print("Generating emoji tiles now...")
+            import generate_tiles
+            generate_tiles.generate_all_tiles()
 
         png_files = [f for f in os.listdir(TILES_DIR) if f.endswith(".png")]
         if not png_files:
